@@ -1,17 +1,10 @@
 <?php
+use function Display\printResult;
+
+require_once("display.php");
 
 $userChoice = readline("> ");
 
-if($userChoice == "paper") {
-    $computerChoice = "scissors";
-}
+printResult($userChoice);
 
-if($userChoice == "scissors") {
-    $computerChoice = "rock";
-}
 
-if($userChoice == "rock") {
-    $computerChoice = "paper";
-}
-
-echo "Sorry, but the computer chose $computerChoice";
