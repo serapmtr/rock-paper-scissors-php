@@ -1,6 +1,6 @@
 <?php
 
-namespace Random;
+namespace Functions\Random;
 
 
 function randomChoice(array $computerChoices)

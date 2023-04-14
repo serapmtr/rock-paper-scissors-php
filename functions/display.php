@@ -1,11 +1,12 @@
 <?php
 
-namespace Display;
+namespace Functions\Display;
 
-use function Random\randomChoice;
+use User;
+use function Functions\Random\randomChoice;
 
 require_once("random.php");
-function printResult(string  $userChoice)
+function printResult(string  $userChoice, User $user)
 {
     $computerChoices = ["rock", "paper", "scissors"];
 
@@ -15,8 +16,10 @@ function printResult(string  $userChoice)
             echo "Sorry, but the computer chose $computerChoice";
         } else if($computerChoice == "rock") {
             echo "Well done. The computer chose $computerChoice and failed";
+            $user ->addScore(100);
         } else {
             echo "There is a draw ($computerChoice)";
+            $user -> addScore(50);
         }
     } 
     
@@ -25,8 +28,10 @@ function printResult(string  $userChoice)
             echo "Sorry, but the computer chose $computerChoice";
         } else if($computerChoice == "paper") {
             echo "Well done. The computer chose $computerChoice and failed";
+            $user ->addScore(100);
         } else {
             echo "There is a draw ($computerChoice)";
+            $user ->addScore(50);
         }
     }   
 
@@ -35,9 +40,15 @@ function printResult(string  $userChoice)
             echo "Sorry, but the computer chose $computerChoice";
         } else if($computerChoice == "scissors") {
             echo "Well done. The computer chose $computerChoice and failed";
+            $user ->addScore(100);
         } else {
             echo "There is a draw ($computerChoice)";
+            $user ->addScore(50);
         }
     }   
+
+    if($userChoice == "!rating") {
+        echo "Your rating: " . $user-> getScore();
+    }
 
 }
