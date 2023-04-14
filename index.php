@@ -29,7 +29,7 @@ foreach ($elements as $index => $element) {
 }
 
   $options = setOptions();
-   
+  echo "Okay, let's start \n";
 do {
   
     $userChoice = readline("\n> ");

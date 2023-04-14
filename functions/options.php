@@ -16,6 +16,8 @@ function setOptions()
         array_push($options, $arrayOptions);
         return $options[0];
     }
+
+    
 }
 
 function removeOption(array $options, string $option): array
