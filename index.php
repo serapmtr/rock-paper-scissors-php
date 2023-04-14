@@ -1,11 +1,13 @@
 <?php
 use function Functions\Display\printResult;
 use function Functions\Files\readFiles;
+use function Functions\Options\setOptions;
 use function Functions\Parse\parse;
 
 require_once("functions/display.php");
 require_once("functions/readFile.php");
 require_once("functions/parse.php");
+require_once("functions/options.php");
 require_once("models/User.php");
 
 $userName = readline("Enter your name: > ");
@@ -26,21 +28,30 @@ foreach ($elements as $index => $element) {
     }
 }
 
+  $options = setOptions();
+   
 do {
-
+  
     $userChoice = readline("\n> ");
+    $ok = false;
 
-    if (
-        $userChoice != "paper" &&
-        $userChoice != "rock" &&
-        $userChoice != "scissors" &&
-        $userChoice != "!exit" &&
-        $userChoice != "!rating"
-    ) {
-        echo "Invalid input";
+    foreach($options as $option) {
+        if($option == $userChoice) {
+            $ok = true;
+        }
     }
 
-    printResult($userChoice, $user);
+    if (
+        $userChoice != "!exit" &&
+        $userChoice != "!rating"&&
+        !$ok
+
+    ) {
+        echo "Invalid input \n";
+        continue;
+    }
+
+    printResult($userChoice, $options, $user);
 } while ($userChoice != "!exit");
 
 echo "Bye!\n";
