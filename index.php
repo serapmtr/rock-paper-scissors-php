@@ -1,10 +1,16 @@
 <?php
 use function Display\printResult;
 
-require_once("display.php");
+require_once("functions/display.php");
+do {
+    $userChoice = readline("\n> ");
 
-$userChoice = readline("> ");
+    if($userChoice != "paper" && $userChoice != "rock" && $userChoice != "scissors" && $userChoice != "!exit") {
+        echo "Invalid input";
+    }
 
-printResult($userChoice);
+    printResult($userChoice);
+} while ($userChoice != "!exit");
 
+echo "Bye!\n";
 
